@@ -7,6 +7,7 @@ router.get('/admin/categories/new/', (req, res) => {
   res.render('admin/categories/new');
 });
 
+//rota salvando no Banco
 router.post('/categories/save', (req, res) => {
   var title = req.body.title;
 
@@ -25,6 +26,13 @@ router.post('/categories/save', (req, res) => {
     res.redirect('/');
   });
 
+});
+
+//Rota listar as categorias
+router.get('/admin/categories/', (req, res) => {
+  Category.findAll().then(categories => {
+    res.render('admin/categories/', {categories: categories});
+  });
 });
 
 module.exports = router;
