@@ -7,6 +7,19 @@ const conn = require('./database/database');
 const categoriesController = require('./categories/CategoriesController');
 const articleController = require('./articles/ArticlesController');
 
+//importando Models
+const Category = require('./categories/CategoryModel');
+const Article = require('./articles/ArticleModel');
+
+//Forçando a reescrita de tabelas no DB - (caso crie novos relacionamentos ou reset nas tabelas)
+// conn.sync({ force: true })
+//   .then(() => {
+//     console.log('Tables created successfully');
+//   })
+//   .catch(err => {
+//     console.error('Error creating tables: ', err);
+//   });
+
 //carregando a view engine
 app.set('view engine', 'ejs');
 

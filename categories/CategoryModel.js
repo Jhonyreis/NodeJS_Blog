@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const conn = require('../database/database');
 
-const Category = conn.define('categories', {
+const Category = conn.define('category', {
   title: {
     type: Sequelize.STRING,
     allowNull: false
