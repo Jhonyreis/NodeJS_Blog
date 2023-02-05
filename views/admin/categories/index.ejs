@@ -24,11 +24,26 @@
           <td><%= category.slug %></td>
           <td>
             <button class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+            <form action="/categories/delete" method="post" style="display: inline;" onsubmit="submitForm(event, this)">
+              <input type="hidden" name="id" value="<%= category.id %>">
+              <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+            </form>
           </td>
         </tr>
       <% }) %>
     </tbody>
   </table>
 </div>
+
+<script>
+  function submitForm(event, form){
+    event.preventDefault();
+    var decision = confirm('Tem certeza?');
+    if(decision) {
+      form.submit();
+    }
+  }
+</script>
+
+
 <%- include ('../../partials/footer') %>
