@@ -1,4 +1,5 @@
 const express = require('express');
+var path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const conn = require('./database/database');
@@ -23,12 +24,15 @@ const Article = require('./articles/ArticleModel');
 //carregando a view engine
 app.set('view engine', 'ejs');
 
-//arquivos estáticos
-app.use(express.static('public'));
-
 //Body Parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+//arquivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+//tinymce
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
 //conection DB
 conn
